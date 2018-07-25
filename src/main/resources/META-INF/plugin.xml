@@ -1,0 +1,68 @@
+<idea-plugin>
+    <id>com.flying.xiaopo.snippetlab.id</id>
+    <name>SnippetLab</name>
+    <version>1.0</version>
+    <vendor email="wupanjie0611@gmail.com" url="http://www.yourcompany.com">YourCompany</vendor>
+
+    <description><![CDATA[
+      Enter short description for your plugin here.<br>
+      <em>most HTML tags may be used</em>
+    ]]></description>
+
+    <change-notes><![CDATA[
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>
+    ]]>
+    </change-notes>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="145.0"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <toolWindow
+            id="SnippetLab"
+            anchor="right"
+            icon="AllIcons.Toolwindows.ToolWindowFavorites"
+            factoryClass="com.flying.xiaopo.lab.LabToolWindowFactory"
+        />
+
+        <applicationService
+            serviceImplementation="com.flying.xiaopo.lab.LabManager"
+        />
+
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <group id="SnippetLab.AddToSnippetLabMenu" text="Add To SnippetLab" popup="true"
+            class="com.flying.xiaopo.lab.action.add.AddToLabActionGroup">
+            <add-to-group group-id="EditorTabPopupMenu" anchor="first"/>
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
+        </group>
+
+        <group id="SnippetLab.SnippetPopupMenu" text="Snippet Popup" popup="true">
+            <action id="SnippetLab.CopySnippet" class="com.flying.xiaopo.lab.action.CopySnippetAction"
+                text="Copy"/>
+
+            <action id="SnippetLab.DeleteSnippet" class="com.flying.xiaopo.lab.action.DeleteSnippetAction"
+                text="Delete..."/>
+
+            <group id="SnippetLab.MoveSnippet" class="com.flying.xiaopo.lab.action.move.MoveToSnippetActionGroup"
+                text="Move to" description="Move to another category" popup="true"/>
+
+            <action id="SnippetLab.Rename" class="com.flying.xiaopo.lab.action.RenameSnippetAction"
+                text="Rename" description="Rename snippet"/>
+        </group>
+
+
+
+    </actions>
+
+</idea-plugin>
